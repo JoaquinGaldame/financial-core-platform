@@ -1,6 +1,6 @@
 # Financial Core Platform
 
-Enterprise-grade financial platform built with .NET 8, Clean Architecture, SQL Server, Docker, and modern software engineering practices.
+Enterprise-grade financial platform built with .NET 9, Clean Architecture, SQL Server, Docker, and modern software engineering practices.
 
 ---
 
@@ -102,7 +102,7 @@ Contains:
 
 ## Technology Stack
 
-* .NET 8
+* .NET 9
 * ASP.NET Core Web API
 * Entity Framework Core
 * SQL Server
@@ -130,7 +130,7 @@ Contains:
 
 ### Prerequisites
 
-* .NET SDK 8
+* .NET SDK 9
 * Docker Desktop
 * SQL Server (or Docker Compose)
 

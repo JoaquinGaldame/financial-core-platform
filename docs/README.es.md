@@ -1,6 +1,6 @@
 # Financial Core Platform
 
-Plataforma financiera empresarial desarrollada con .NET 8, Clean Architecture, SQL Server, Docker y buenas prácticas modernas de ingeniería de software.
+Plataforma financiera empresarial desarrollada con .NET 9, Clean Architecture, SQL Server, Docker y buenas prácticas modernas de ingeniería de software.
 
 ---
 
@@ -101,7 +101,7 @@ Contiene:
 
 ## Stack Tecnológico
 
-* .NET 8
+* .NET 9
 * ASP.NET Core Web API
 * Entity Framework Core
 * SQL Server

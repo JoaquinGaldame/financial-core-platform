@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Financial.Domain.Exceptions
+namespace Financial.Domain.Exceptions;
+// Representa reglas del negocio.
+public sealed class DomainException : Exception
 {
-    public sealed class DomainException : Exception
+    public DomainException(string message) : base(message)
     {
-        public DomainException(string message) : base(message)
-        {
-        }
     }
 }

@@ -11,7 +11,7 @@ public class CreateCustomerHandler
         _customerRepository = customerRepository;
     }
 
-    public async Task HandleAsync( CreateCustomerCommand command, CancellationToken cancellationToken)
+    public async Task HandleAsync(CreateCustomerCommand command, CancellationToken cancellationToken)
     {
         var customer = new Customer(
             command.FirstName,
@@ -22,8 +22,6 @@ public class CreateCustomerHandler
             command.PhoneNumber,
             command.BirthDate);
 
-        await _customerRepository.AddAsync(
-            customer,
-            cancellationToken);
+        await _customerRepository.AddAsync(customer, cancellationToken);
     }
 }

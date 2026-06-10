@@ -1,4 +1,4 @@
-using Financial.Domain.Entities.Loan;
+using Financial.Domain.Entities.Loans;
 using Financial.Domain.Exceptions;
 
 namespace Financial.Domain.Entities.Loans;

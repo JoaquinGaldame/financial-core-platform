@@ -1,6 +1,5 @@
 
-namespace Financial.Domain.Entities.Customer
-{
+namespace Financial.Domain.Entities.Customers;
     public enum CustomerStatus
     {
         Active,
@@ -8,4 +7,3 @@ namespace Financial.Domain.Entities.Customer
         Suspended,
         Blacklisted
     }
-}

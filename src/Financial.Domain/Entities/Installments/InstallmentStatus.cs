@@ -1,6 +1,5 @@
 
-namespace Financial.Domain.Entities.Installment
-{
+namespace Financial.Domain.Entities.Installments;
     public enum InstallmentStatus
     {
         Pending,
@@ -9,4 +8,3 @@ namespace Financial.Domain.Entities.Installment
         Overdue,
         Cancelled
     }
-}

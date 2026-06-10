@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Financial.Domain.Entities.Installment;
+namespace Financial.Domain.Entities.Installments;
 
     // Representa cada cuota del préstamo.
     // It represents each installment of the loan.

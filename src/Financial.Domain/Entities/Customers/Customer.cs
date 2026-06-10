@@ -1,7 +1,8 @@
 using Financial.Domain.Common;
 using Financial.Domain.Exceptions;
+using Financial.Domain.ValueObjects.Documents;
 
-namespace Financial.Domain.Entities.Customer;
+namespace Financial.Domain.Entities.Customers;
 
     // Representa al cliente/persona.
     // It represents the customer or individual.

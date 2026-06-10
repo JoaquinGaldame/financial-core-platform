@@ -1,6 +1,5 @@
 
-namespace Financial.Domain.Entities.Account
-{
+namespace Financial.Domain.Entities.Accounts;
     public enum AccountStatus
     {
         Active,
@@ -9,4 +8,3 @@ namespace Financial.Domain.Entities.Account
         Suspended,
         Pending
     }
-}

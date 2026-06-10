@@ -1,10 +1,9 @@
 
-namespace Financial.Domain.Entities.Customer
-{
+namespace Financial.Domain.ValueObjects.Documents;
+
     public enum DocumentType
     {
         Passport,
         NationalId
     
     }
-}

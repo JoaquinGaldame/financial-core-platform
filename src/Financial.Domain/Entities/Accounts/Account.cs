@@ -1,7 +1,7 @@
 using Financial.Domain.Common;
 using Financial.Domain.Entities.Payments;
 
-namespace Financial.Domain.Entities.Account;
+namespace Financial.Domain.Entities.Accounts;
 
     // Representa una cuenta financiera asociada al cliente.
     // It represents a financial account associated with the client.

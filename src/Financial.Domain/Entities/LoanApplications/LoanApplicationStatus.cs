@@ -1,6 +1,5 @@
 
-namespace Financial.Domain.Entities.LoanApplication
-{
+namespace Financial.Domain.Entities.LoanApplications;
     public enum LoanApplicationStatus
     {
         Pending,
@@ -9,4 +8,3 @@ namespace Financial.Domain.Entities.LoanApplication
         Rejected,
         Cancelled
     }
-}

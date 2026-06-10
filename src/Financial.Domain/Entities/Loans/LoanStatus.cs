@@ -1,6 +1,5 @@
 
-namespace Financial.Domain.Entities.Loan
-{
+namespace Financial.Domain.Entities.Loans;
     public enum LoanStatus
     {
         Approved,
@@ -11,4 +10,3 @@ namespace Financial.Domain.Entities.Loan
         Cancelled,
         WrittenOff
     }
-}

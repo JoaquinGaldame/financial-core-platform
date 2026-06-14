@@ -16,11 +16,13 @@ public class CreateCustomerHandler
         var customer = new Customer(
             command.FirstName,
             command.LastName,
-            command.DocumentType,
+            command.DocumentTypeId,
             command.DocumentNumber,
             command.Email,
             command.PhoneNumber,
-            command.BirthDate);
+            command.BirthDate,
+            command.CustomerTypeId,
+            command.TaxIdentification);
 
         await _customerRepository.AddAsync(customer, cancellationToken);
     }

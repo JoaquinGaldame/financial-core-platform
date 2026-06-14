@@ -1,20 +1,67 @@
+using Financial.Domain.Common;
+using Financial.Domain.Entities.Catalogs;
+using Financial.Domain.Entities.Payments;
+using Financial.Domain.Exceptions;
 
 namespace Financial.Domain.Entities.Vouchers;
 
-    // Representa el comprobante del pago.
-    // It represents proof of payment.
-    public class Voucher
+public class Voucher : AuditableEntity
+{
+    public Guid PaymentId { get; private set; }
+
+    public Payment? Payment { get; private set; }
+
+    public int VoucherTypeId { get; private set; }
+
+    public VoucherType? VoucherType { get; private set; }
+
+    public string Number { get; private set; } = string.Empty;
+
+    public string PointOfSale { get; private set; } = string.Empty;
+
+    public VoucherStatus Status { get; private set; } = VoucherStatus.Draft;
+
+    public DateTime IssuedAt { get; private set; }
+
+    public string? FileUrl { get; private set; }
+
+    public string? Metadata { get; private set; }
+
+    private Voucher()
     {
-        public long Id { get; set; }
-        public Guid PaymentId { get; set; }
-        public string Number { get; set; } = string.Empty;
-        public string PointOfSale { get; set; } = string.Empty;
-        public VoucherTypes Type { get; set; }
-        public VoucherStatus Status { get; set; } = VoucherStatus.Draft;
-        public DateTime IssuedAt { get; set; }
-        public string? FileUrl { get; set; }
-        public string? Metadata { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        
     }
+
+    public Voucher(Guid paymentId, int voucherTypeId, string number, string pointOfSale)
+    {
+        if (paymentId == Guid.Empty)
+            throw new DomainException("Payment id is required.");
+
+        if (voucherTypeId <= 0)
+            throw new DomainException("Voucher type is required.");
+
+        if (string.IsNullOrWhiteSpace(number))
+            throw new DomainException("Voucher number is required.");
+
+        PaymentId = paymentId;
+        VoucherTypeId = voucherTypeId;
+        Number = number;
+        PointOfSale = pointOfSale;
+        IssuedAt = DateTime.UtcNow;
+        CreatedAt = DateTime.UtcNow;
+    }
+
+    public void Issue(string? fileUrl = null, string? metadata = null)
+    {
+        Status = VoucherStatus.Issued;
+        FileUrl = fileUrl;
+        Metadata = metadata;
+        IssuedAt = DateTime.UtcNow;
+        MarkAsUpdated();
+    }
+
+    public void Cancel()
+    {
+        Status = VoucherStatus.Cancelled;
+        MarkAsUpdated();
+    }
+}

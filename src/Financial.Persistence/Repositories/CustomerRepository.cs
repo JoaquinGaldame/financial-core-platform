@@ -17,12 +17,16 @@ public class CustomerRepository : ICustomerRepository
     public async Task<Customer?> GetByIdAsync(Guid customerId, CancellationToken cancellationToken)
     {
         return await _context.Customers
+            .Include(x => x.DocumentType)
+            .Include(x => x.CustomerType)
             .FirstOrDefaultAsync(x => x.Id == customerId, cancellationToken);
     }
 
     public async Task<Customer?> GetByDocumentAsync(string documentNumber, CancellationToken cancellationToken)
     {
         return await _context.Customers
+            .Include(x => x.DocumentType)
+            .Include(x => x.CustomerType)
             .FirstOrDefaultAsync(x => x.DocumentNumber == documentNumber, cancellationToken);
     }
 
@@ -35,7 +39,10 @@ public class CustomerRepository : ICustomerRepository
         int pageSize,
         CancellationToken cancellationToken)
     {
-        var query = _context.Customers.AsQueryable();
+        var query = _context.Customers
+            .Include(x => x.DocumentType)
+            .Include(x => x.CustomerType)
+            .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(firstName))
             query = query.Where(x => x.FirstName.Contains(firstName));

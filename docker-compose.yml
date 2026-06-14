@@ -1,0 +1,37 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: financial-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Finance#621535"
+    ports:
+      - "14333:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    healthcheck:
+      test: [
+        "CMD-SHELL",
+        "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P $$MSSQL_SA_PASSWORD -Q \"SELECT 1\" || exit 1"
+      ]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  sqlserver-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    volumes:
+      - ./docker/sql/init.sql:/init/init.sql:ro
+    entrypoint:
+      - /bin/bash
+      - -c
+      - >
+        /opt/mssql-tools18/bin/sqlcmd -C -S sqlserver -U sa -P "Finance#621535" -i /init/init.sql
+    restart: "no"
+
+volumes:
+  sqlserver_data:

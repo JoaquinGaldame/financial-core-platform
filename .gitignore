@@ -18,6 +18,7 @@ TestResults/
 *.user
 *.rsuser
 *.suo
+GUIDE.md
 
 # ==========================================
 # Visual Studio
